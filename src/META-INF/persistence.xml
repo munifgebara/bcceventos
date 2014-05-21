@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="BCCEventosPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>br.fafiman.bcceventos.entidades.Participante</class>
+    <class>br.fafiman.bcceventos.entidades.Evento</class>
+    <class>br.fafiman.bcceventos.entidades.Horario</class>
+    <class>br.fafiman.bcceventos.entidades.Inscricao</class>
+    <class>br.fafiman.bcceventos.entidades.ItemDoEvento</class>
+    <class>br.fafiman.bcceventos.entidades.Minicurso</class>
+    <class>br.fafiman.bcceventos.entidades.Movimento</class>
+    <class>br.fafiman.bcceventos.entidades.Palestra</class>
+    <class>br.fafiman.bcceventos.entidades.AtividadeCultural</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bcceventos?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="senha"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+    </properties>
+  </persistence-unit>
+</persistence>
