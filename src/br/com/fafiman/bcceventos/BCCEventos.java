@@ -1,6 +1,9 @@
 package br.fafiman.bcceventos;
 
+import br.com.fafiman.bcceventos.negocios.OperacoesBanco;
+import br.fafiman.bcceventos.entidades.Participante;
 import br.fafiman.bcceventos.telas.TelaPrincipal;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JFrame;
