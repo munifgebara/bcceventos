@@ -1,9 +1,16 @@
-package br.fafiman.bcceventos;
+/*
+ TAREFAS:
+-Pesquisar métodos das classe JOptionPane (Faz diálogos)
+-Implementar a classe EventoModelo
+-Implementar a lcasse EventoConsulta com o excluir funcionando
 
-import br.com.fafiman.bcceventos.negocios.OperacoesBanco;
-import br.fafiman.bcceventos.entidades.Participante;
+
+
+
+ */
+package br.com.fafiman.bcceventos;
+
 import br.fafiman.bcceventos.telas.TelaPrincipal;
-import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JFrame;
@@ -22,6 +29,7 @@ public class BCCEventos {
     public static void main(String[] args) {
         // TODO code application logic here
 
+        
         System.out.println("Iniciando Sistemas BCC Eventos");
         emf = Persistence.createEntityManagerFactory("BCCEventosPU");
 

@@ -19,6 +19,11 @@ public class ParticipanteModelo implements TableModel {
 
     private List<Participante> lista;
 
+    public List<Participante> getLista() {
+        return lista;
+    }
+    
+
     public ParticipanteModelo() {
         lista = OperacoesBanco.listaTodosParticipantes();
     }

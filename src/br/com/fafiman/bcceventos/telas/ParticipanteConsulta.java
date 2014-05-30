@@ -6,6 +6,12 @@
 
 package br.com.fafiman.bcceventos.telas;
 
+
+import br.com.fafiman.bcceventos.BCCEventos;
+import br.fafiman.bcceventos.entidades.Participante;
+import javax.persistence.EntityManager;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author munifgebarajunior
@@ -36,7 +42,7 @@ public class ParticipanteConsulta extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Filtro");
 
@@ -49,6 +55,11 @@ public class ParticipanteConsulta extends javax.swing.JFrame {
         jButton2.setText("Alterar");
 
         jButton3.setText("Remover");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,6 +99,40 @@ public class ParticipanteConsulta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    //Botão Excluir
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int selecionado=jTable1.getSelectedRow();
+        if (selecionado==-1){
+            JOptionPane.showMessageDialog(this, "Você deve selecionar um registro primeiro","Aviso",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int resposta=JOptionPane.showConfirmDialog(this,"Confirma exclusão ?","Segurança",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if (resposta==JOptionPane.YES_OPTION){
+            //Excluir
+            ParticipanteModelo pm=(ParticipanteModelo) jTable1.getModel();
+            Participante p=pm.getLista().get(selecionado);
+            EntityManager em = BCCEventos.emf.createEntityManager();
+            try{
+                em.getTransaction().begin();
+                p=em.find(Participante.class, p.getId());
+                if (p!=null){
+                    em.remove(p);
+                }
+                em.getTransaction().commit();
+                jTable1.setModel(new ParticipanteModelo());
+                jTable1.repaint();
+            }
+            catch(Exception ex){
+                if (em.getTransaction().isActive()){
+                    em.getTransaction().rollback();
+                }
+                JOptionPane.showMessageDialog(this, "Não foi possível excluir.\n"+ex.getLocalizedMessage(),"Problemas",JOptionPane.WARNING_MESSAGE);
+            }
+            
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

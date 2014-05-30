@@ -5,7 +5,8 @@
  */
 package br.com.fafiman.bcceventos.negocios;
 
-import br.fafiman.bcceventos.BCCEventos;
+
+import br.com.fafiman.bcceventos.BCCEventos;
 import br.fafiman.bcceventos.entidades.Evento;
 import br.fafiman.bcceventos.entidades.Inscricao;
 import br.fafiman.bcceventos.entidades.Participante;
